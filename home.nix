@@ -1,9 +1,22 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   home = {
     packages = with pkgs; [
       hello
+      zsh
+      tmux
+      chezmoi
+      starship
+      eza
+      bat
+      oh-my-zsh
+      diff-so-fancy
+      cargo
     ];
+
+    activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
+      ${pkgs.chezmoi}/bin/chezmoi init --apply --branch NixOS Nebulea-dev
+    '';
 
     # This needs to actually be set to your username
     username = "lea";

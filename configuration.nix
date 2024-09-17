@@ -123,25 +123,9 @@
     gnome.gnome-terminal
     zsh
     tmux
-    chezmoi
-    starship
-    eza
-    bat
-    oh-my-zsh
-    cargo
-    diff-so-fancy
-    home-manager
     gnumake
+    home-manager
   ];
-
-system.activationScripts.chezmoi = {
-  text = ''
-    #!/bin/bash
-    
-    export HOME=${config.users.users.lea.home}
-    ${pkgs.chezmoi}/bin/chezmoi init --apply https://github.com/Nebulea-dev/dotfiles.git
-  '';
-};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
