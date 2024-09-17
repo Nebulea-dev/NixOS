@@ -1,6 +1,6 @@
 .PHONY: update
 update:
-	home-manager switch --option eval-cache false --flake .#lea
+	home-manager switch --flake .#lea
 
 .PHONY: clean
 clean:

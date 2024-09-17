@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 {
   home = {
     packages = with pkgs; [
@@ -12,6 +12,7 @@
       oh-my-zsh
       diff-so-fancy
       cargo
+      unstable.neovim
     ];
 
     activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''

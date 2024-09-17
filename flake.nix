@@ -2,7 +2,8 @@
   description = "My Home Manager and NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -12,10 +13,19 @@
     flatpaks.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, home-manager, flatpaks, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, flatpaks, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          # make unstable packages available via overlay
+          (final: prev: {
+            unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+          })
+        ];
+      };
     in {
       # NixOS configuration
       nixosConfigurations = {
@@ -32,6 +42,7 @@
       homeConfigurations = {
         lea = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+           
           modules = [
             ./home.nix
             ./flatpak.nix
