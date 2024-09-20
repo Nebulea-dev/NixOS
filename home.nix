@@ -12,7 +12,33 @@
       oh-my-zsh
       diff-so-fancy
       cargo
-      unstable.neovim
+      neovim
+      nerdfonts
+      lunarvim
+      unstable.rustc
+      xsel
+      unzip
+      ripgrep
+      libgcc
+      nodejs
+      gccgo
+      tree-sitter
+      fd
+
+      # Tree-sitter dependencies
+      luajitPackages.luarocks
+      python312
+      zulu17
+      julia_19-bin
+      php
+      php83Packages.composer
+
+      # LSPs
+      lua-language-server
+    ];
+    
+    sessionPath = [
+      "$HOME/.local/bin"
     ];
 
     activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
