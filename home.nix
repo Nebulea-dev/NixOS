@@ -1,9 +1,14 @@
-{ config, inputs, lib, pkgs, rootPath, ... }:
+{ config, lib, pkgs, ... }:
 
-let
-  customBackground = ./assets/background.jpg;
-in
 {
+  dconf.settings = with lib.hm.gvariant; {
+    "org/gnome/desktop/background" = {
+      color-shading-type = "solid";
+      picture-options = "zoom";
+      picture-uri = "file://" + ./assets/wallpaper.jpg;
+    };
+  };
+
   home = {
     packages = with pkgs; [
       hello
@@ -48,15 +53,6 @@ in
     activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
       ${pkgs.chezmoi}/bin/chezmoi init --apply --branch NixOS Nebulea-dev
     '';
-
-    #dconf.settings = {
-      #"org/gnome/desktop/background" = {
-      #  picture-uri-dark = "file://" + ./assets/wallpaper.jpg;
-      #};
-   #   "org/gnome/desktop/interface" = {
-   #     color-scheme = "prefer-dark";
-   #   };
-   # };
 
 
     # This needs to actually be set to your username
