@@ -1,6 +1,6 @@
 .PHONY: update
 update:
-	home-manager switch --flake .#lea
+	home-manager switch --flake .#nixian
 
 .PHONY: clean
 clean:

@@ -29,7 +29,7 @@
     in {
       # NixOS configuration
       nixosConfigurations = {
-        lea = nixpkgs.lib.nixosSystem {
+        nixian = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./configuration.nix
@@ -40,9 +40,9 @@
 
       # Home Manager configuration
       homeConfigurations = {
-        lea = home-manager.lib.homeManagerConfiguration {
+        nixian = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-           
+
           modules = [
             ./home.nix
             ./flatpak.nix
