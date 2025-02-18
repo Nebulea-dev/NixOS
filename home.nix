@@ -61,7 +61,7 @@
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file://" + ./assets/wallpaper.jpg;
+      picture-uri-dark = "file://" + ./assets/wallpaper.jpg;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {                                                                                            
