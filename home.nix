@@ -74,6 +74,10 @@
       command = "gnome-terminal";                                                                                                                 
       name = "open terminal";                                                                                                                     
     };  
+
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
   };
 
   programs.gnome-terminal = {
