@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 {
   home = {
     packages = with pkgs; [
@@ -13,7 +12,7 @@
       oh-my-zsh
       diff-so-fancy
       cargo
-      neovim
+      unstable.neovim #0.10 neovim
       nerdfonts
       lunarvim
       unstable.rustc
